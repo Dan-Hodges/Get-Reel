@@ -34,6 +34,8 @@ requirejs(
           notSeenArray.push(snapShot[key]);
         }
       }
+      console.log(seenArray);
+      console.log(notSeenArray);
 
       $("#search").click(function(){
         var userInput = $('input').val();
@@ -55,9 +57,10 @@ requirejs(
               }).done(function(data) {
                 searchObj[i] = data;
                 searchObj[i].Seen = false;
+                searchObj[i].NeedsButton = true;
                 searchObj[i].Rating = 0;                
                 if (i === (allIds.length - 1)) {
-                  fillTemplate(seenArray, notSeenArray, searchObj);
+                  fillTemplate(searchObj, null, null);
                 }
               });
             })(i);
@@ -67,9 +70,10 @@ requirejs(
 
       function fillTemplate (obj1, obj2, obj3) {
         require(['hbs!../templates/bars'], function(template) {
-          $("#movies").html(template(obj1));
-          $("#movies").append(template(obj2));
-          $("#movies").append(template(obj3));
+          $(".display-movies").html(template(obj1));
+          $(".display-movies").append(template(obj2));
+          $(".display-movies").append(template(obj3));
+          $('.myRating').rating();
         });
       }
 

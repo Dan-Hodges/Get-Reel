@@ -1,28 +1,30 @@
 {{#each this}}
-  <div id="{{@key}}" class="searchResultsDiv col-md-3">
+<div id="{{@key}}" class="col-xs-6 col-md-3">
+  <a class="thumbnail">
     <img src="{{Poster}}">
     <h1>{{Title}}</h1>
     <h3>Released: {{Year}}</h3>
-    <button  class="btn btn-primary btn-lg" id="addMovie">Add Movie</button>
+    
+
+    {{#if NeedsButton}}
+
+    <button class="btn btn-primary btn-lg" id="addMovie">Add Movie</button>
+
+    {{/if}}
 
     {{#if Seen}}
-    <form class="form-inline">
-      <div class="form-group">
-        <label for="Rating">Rating: </label>
-        <input  type='hidden' class='myRating' data-start="0" data-stop="10" value={{Rating}}>
-  	  </div>
-    </form>
 
-    <div id="watchedBox">Watched
-    </div>
+    <label for="Rating">Rating: </label>
+    <input  type='hidden' class='myRating' data-start="0" data-stop="5" value={{Rating}}></input>
+
     {{/if}}
 
     {{#unless Seen}}
-    </div>
-      <button type="button" class="btn btn-default watched {{Seen}}"></button>
-      <button type="button" class="btn btn-default delete">Delete This Movie</button>
-    </div>
-    {{/unless}}
+  
+    <button type="button" class="btn btn-default watched {{Seen}}">watched</button>
+    <button type="button" class="btn btn-default delete">Delete This Movie</button>
 
-  </div>
+    {{/unless}}
+  </a>
+</div>
 {{/each}}
