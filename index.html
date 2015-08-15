@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Motherfuckin' Movies</title>
-    <!-- <link rel="stylesheet" type="text/css" href="styles/normalize.css"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <meta charset="utf-8">
+  <title>Motherfuckin' Movies</title>
+  <!-- <link rel="stylesheet" type="text/css" href="styles/normalize.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
+
 <body>
   <div class="container-fluid">
     <div class="row">
@@ -16,7 +16,7 @@
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="index.html">
-                <img alt="Brand" src="...">
+                <img alt="Brand" src="">
               </a>
             </div>
             <button type="button" class="btn btn-default navbar-btn" id="wishlist">Wishlist</button>
@@ -25,7 +25,7 @@
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search">
               </div>
-              <button type="submit" class="btn btn-default" id="search">Search</button>
+              <button type="button" class="btn btn-default" id="search">Search</button>
             </form>
           </div> <!-- End of navbar container fluid -->
         </nav>
@@ -42,14 +42,12 @@
       </div> <!-- End of button group column -->
     </div> <!-- End of button group row, hidden until Search button is clicked. -->
 
-    <div class="row display-movies">
+    <div class="row display-movies" id="movies">
       
-    <!-- Search results go here. -->
-
 
     </div> <!-- End of display-movies row -->
   </div> <!-- End of container-fluid -->
-  <script data-main="scripts/app" 
+  <script data-main="javascripts/app" 
           src="bower_components/requirejs/require.js"></script>
 </body>
 </html>

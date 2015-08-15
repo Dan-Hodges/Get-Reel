@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "lodash": "~3.10.1"
+    "lodash": "~3.10.1",
+    "handlebars": "~3.0.3"
   }
 }
