@@ -20,10 +20,10 @@
     {{/if}}
 
     {{#unless Seen}}
-  
+    {{#if firebase}}
     <button type="button" id="moveToWatched" class="btn btn-default watched {{Seen}}">watched</button>
-    <button type="button" class="btn btn-default delete">Delete This Movie</button>
-
+    <button type="button" class="btn btn-default delete" id="delete">Delete This Movie</button>
+    {{/if}}
     {{/unless}}
   </a>
 </div>

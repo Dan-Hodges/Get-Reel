@@ -31,7 +31,7 @@ requirejs(
       $(document).ready(function () {
         fillTemplate(notSeenArray, null, null);
       });
-      
+
       for (var key in snapShot) {
         if (snapShot[key].Seen === (true)) { 
           seenArray.push(snapShot[key]);
@@ -45,10 +45,27 @@ requirejs(
 
       $("#search").click(function(){
         var userInput = $('input').val();
+        // userInput = userInput.toLowerCase();
         $('input').val('');
-        console.log("you clicked me");
+        // console.log("you clicked me");
         console.log("userInput :", userInput);
         $('#').val('');
+
+        var notSeenResults = [];
+        var seenResults = [];
+        for (var i = 0; i < notSeenArray.length; i++) {
+          if (userInput === notSeenArray[i].Title) {
+            notSeenResults.push(notSeenArray[i]);
+          }
+        }
+        for (var i = 0; i < seenArray.length; i++) {
+          if (userInput === seenArray[i].Title) {
+            seenResults.push(seenArray[i]);
+          }
+        }
+
+
+         
         var allIds = [], resultsObj = {};
         $.ajax({
           url: "http://www.omdbapi.com/?s=" + userInput + "&r=json"
@@ -66,7 +83,8 @@ requirejs(
                 searchObj[i].NeedsAddButton = true;
                 // searchObj[i].Rating = 0;                
                 if (i === (allIds.length - 1)) {
-                  fillTemplate(searchObj, null, null);
+                  fillTemplate(searchObj, notSeenResults, seenResults);
+                  // console.log(searchObj);
                 }
               });
             })(i);
@@ -80,6 +98,12 @@ requirejs(
           $(".display-movies").append(template(obj2));
           $(".display-movies").append(template(obj3));
           $('.myRating').rating();
+
+          var filteredMovies = $('.display-movies').find('h1');
+          filteredMovies = filteredMovies.sort();
+          console.log(filteredMovies);
+          
+
         });
       }
 
@@ -97,8 +121,9 @@ requirejs(
             Year: $(this).siblings('h3').text(),
             Poster: $(this).siblings('img').attr('src'),
             Seen: false,
-            Rating: 0
-        }
+            Rating: 0,
+            firebase: true
+        };
         // console.log(newMovie);
         myFirebaseRef.push(newMovie);
       });
@@ -117,7 +142,12 @@ requirejs(
           }
         }
         
-      
+      });
+
+
+      $(document).on('click', '#delete', function() {
+       var thisElement = $(this).parent().parent();
+       thisElement.remove();
       });
 
     });

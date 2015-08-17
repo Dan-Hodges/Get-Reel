@@ -1,3 +1,18 @@
+.thumbnail {
+  min-height: 400px;
+  height: auto; }
 
+* {
+  font-family: "Roboto"; }
+
+a:hover {
+  text-decoration: none; }
+
+body {
+  background-color: red; }
+
+.container-fluid {
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.7); }
 
 /*# sourceMappingURL=main.css.map */
