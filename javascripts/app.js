@@ -20,12 +20,18 @@ requirejs.config({
 requirejs(
   ["jquery", "firebase", "hbs", "bootstrap", "lodash", "rating"], 
   function($, _firebase, hbs, bootstrap, _, rating) {
+
+
     var myFirebaseRef = new Firebase("https://movie-refactor.firebaseio.com/");
-    var snapShot = {}, seenArray = [], notSeenArray = [], searchObj = {};
     
     myFirebaseRef.on("value", function(snapshot) {
+      var snapShot = {}, seenArray = [], notSeenArray = [], searchObj = {};
       snapShot = snapshot.val();
 
+      $(document).ready(function () {
+        fillTemplate(notSeenArray, null, null);
+      });
+      
       for (var key in snapShot) {
         if (snapShot[key].Seen === (true)) { 
           seenArray.push(snapShot[key]);
@@ -56,9 +62,9 @@ requirejs(
                 url: "http://www.omdbapi.com/?i=" + allIds[i] + "&plot=full&r=json"
               }).done(function(data) {
                 searchObj[i] = data;
-                searchObj[i].Seen = false;
-                searchObj[i].NeedsButton = true;
-                searchObj[i].Rating = 0;                
+                // searchObj[i].Seen = false;
+                searchObj[i].NeedsAddButton = true;
+                // searchObj[i].Rating = 0;                
                 if (i === (allIds.length - 1)) {
                   fillTemplate(searchObj, null, null);
                 }
@@ -78,12 +84,45 @@ requirejs(
       }
 
       $("#wishlist").click(function(){
-        fillTemplate(notSeenArray);
+        fillTemplate(notSeenArray, null, null);
       });
 
       $("#watched").click(function(){
-        fillTemplate(seenArray);
+        fillTemplate(seenArray, null, null);
       });
+
+      $(document).on('click', "#addMovie", function () {
+          var newMovie = {
+            Title: $(this).siblings('h1').text(),
+            Year: $(this).siblings('h3').text(),
+            Poster: $(this).siblings('img').attr('src'),
+            Seen: false,
+            Rating: 0
+        }
+        // console.log(newMovie);
+        myFirebaseRef.push(newMovie);
+      });
+
+      $(document).on('click', '#moveToWatched', function () {
+        var thisTitle = $(this).siblings('h1').text();
+        // console.log(thisTitle);
+        // console.log(snapShot);
+        for (var key in snapShot) {
+          if (snapShot[key].Title === thisTitle) { 
+            // console.log(key);
+            // myFirebaseRef.update({key: {Seen: true}})
+            var ref = new Firebase("https://movie-refactor.firebaseio.com/" + key);
+            ref.update({Seen: true});
+            $(this).parent().parent().remove();
+          }
+        }
+        
+      
+      });
+
     });
+
   }
-); 
+);
+
+

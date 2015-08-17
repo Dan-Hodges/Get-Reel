@@ -3,10 +3,10 @@
   <a class="thumbnail">
     <img src="{{Poster}}">
     <h1>{{Title}}</h1>
-    <h3>Released: {{Year}}</h3>
+    <h3>{{Year}}</h3>
     
 
-    {{#if NeedsButton}}
+    {{#if NeedsAddButton}}
 
     <button class="btn btn-primary btn-lg" id="addMovie">Add Movie</button>
 
@@ -21,7 +21,7 @@
 
     {{#unless Seen}}
   
-    <button type="button" class="btn btn-default watched {{Seen}}">watched</button>
+    <button type="button" id="moveToWatched" class="btn btn-default watched {{Seen}}">watched</button>
     <button type="button" class="btn btn-default delete">Delete This Movie</button>
 
     {{/unless}}
