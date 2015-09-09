@@ -2,7 +2,7 @@
 
 ## About
 
-This is a collaborative project at Nashville Software School to refactor code for an application written by another group of students. Originally forked from https://github.com/BrendonPierson/Movie-History, this application allows users to search through their own list of watched/unwatched movies as well ass add to playlists using the OMDB movie API.
+This is a collaborative project at Nashville Software School to refactor code for an application written by another group of students. This application allows users to search through their own list of watched/unwatched movies as well as add to playlists using the OMDB movie API.
 
 ## Frameworks, Libraries, Plugins, and Other Dependencies
 
