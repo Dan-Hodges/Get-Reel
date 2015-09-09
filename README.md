@@ -1,2 +1,34 @@
-# get-reel
-Simple web app that allows users to search the OMBD for movies, store and rate favorites, compose a wish list, and more.
+# Movie History
+
+## About
+
+This is a collaborative project at Nashville Software School to refactor code for an application written by another group of students. Originally forked from https://github.com/BrendonPierson/Movie-History, this application allows users to search through their own list of watched/unwatched movies as well ass add to playlists using the OMDB movie API.
+
+## Frameworks, Libraries, Plugins, and Other Dependencies
+
+* RequireJS
+* Bootstrap
+* HandleBars (with RequireJS-Handlebars plugin)
+* Firebase
+* Lodash
+* Bootstrap-Rating (plugin for rating movies with stars)
+* Grunt
+* Sass
+
+## Installation
+
+To view this application and its code, run:
+
+* `git clone https://github.com/Dan-Hodges/Get-Reel.git`
+* `cd get-reel`
+* Run `npm install` and `bower install` from project directory.
+
+## Serving
+
+* Serve using the local host from your project directory.
+
+## Contact
+
+https://github.com/Dan-Hodges/
+
+
